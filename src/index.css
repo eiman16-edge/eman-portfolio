@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f4f0e8;
+  --color-paper: #faf8f3;
+  --color-ink: #111111;
+  --color-muted: #6e6a62;
+  --color-line: #d8d2c7;
+  --color-dark: #171717;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --breakpoint-sm: 560px;
+  --breakpoint-md: 800px;
+  --breakpoint-lg: 900px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans leading-[1.6] text-ink;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-medium leading-[1.05];
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  img {
+    @apply block w-full object-cover;
+  }
+}
+
+@layer components {
+  /* Original .container equivalent (15px side gutters on mobile, 24px from 800px up) */
+  .shell {
+    width: min(calc(100% - 30px), 1180px);
+    margin-inline: auto;
+  }
+
+  @media (min-width: 801px) {
+    .shell {
+      width: min(calc(100% - 48px), 1180px);
+    }
+  }
+}
