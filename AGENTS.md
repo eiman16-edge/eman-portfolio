@@ -47,7 +47,7 @@ The static site was refactored into a React SPA at the repository root using **V
 
 ### Structure
 
-- `src/main.tsx` — entry; mounts `<App />` inside `<BrowserRouter>`.
+- `src/main.tsx` — entry; mounts `<App />` inside `<HashRouter>`.
 - `src/App.tsx` — routes: `/` (Home), `/about`, `/projects`, `/contact`, and `*` → redirect to `/`.
 - `src/components/` — `Layout`, `Navbar`, `Footer`, `Button`, `Hero`, `StackedMockups`, `SkillsSection`, `ProjectCard`, `PageTitle`, `ContactForm`, `ScrollToTop`.
 - `src/pages/` — `Home`, `About`, `Projects`, `Contact`.
@@ -79,7 +79,7 @@ The static site was refactored into a React SPA at the repository root using **V
 
 - Footer socials reconciled across pages: GitHub (real URL), LinkedIn (real URL), Instagram (`#`).
 - `body` uses `overflow-x: clip` so the fanned-out hero cards never cause horizontal scroll.
-- **Deploying to GitHub Pages:** `BrowserRouter` needs deep-link support. Either add a `public/404.html` fallback (SPA redirect trick), switch to `HashRouter`, or set `base` in `vite.config.ts` if serving from a subpath. Not implemented yet.
+- **Routing / hosting:** the app uses `HashRouter` and Vite `base: "./"` (relative), so the same build works on Netlify (domain root) and GitHub Pages (subpath). Do not hard-code a subpath `base` — it breaks the Netlify deploy (asset 404s → blank screen).
 
 ### Verify
 
